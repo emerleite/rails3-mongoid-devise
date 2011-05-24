@@ -3,9 +3,10 @@ Rails3MongoidDevise::Application.routes.draw do
 
   root :to => "home#index"
 
-  devise_for :users
-  resources :users, :only => :show
-
+  namespace :admin do
+    devise_for :users, :class_name => "Admin::User"
+    resources :users, :only => :show
+  end
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
